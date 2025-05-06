@@ -55,9 +55,12 @@ class ForensicExtractor:
 
     def run_adb_command(self, command):
         try:
+            # Use UTF-8 encoding and errors='replace' to handle encoding issues
             result = subprocess.run([self.adb_path] + command.split(), 
                                   capture_output=True, 
-                                  text=True)
+                                  text=True,
+                                  encoding='utf-8',
+                                  errors='replace')  # Replace invalid characters rather than failing
             return result.stdout.strip()
         except Exception as e:
             print(f"Error running command {command}: {e}")
@@ -239,23 +242,59 @@ class ForensicExtractor:
         print(f"Total calls processed: {len(self.data['communications']['calls'])}")
 
         # Extract SMS
+        print("\nExtracting SMS messages...")
         sms_output = self.run_adb_command('shell content query --uri content://sms')
         if sms_output:
+            message_count = 0
             for line in sms_output.split('Row:'):
-                if line.strip():
+                if not line.strip():
+                    continue
+                    
+                try:
                     message = {}
+                    
+                    # Extract data with fallback for missing fields
                     if 'address=' in line:
                         message['number'] = line.split('address=')[1].split(',')[0].strip()
-                    if 'body=' in line:
-                        message['content'] = line.split('body=')[1].split(',')[0].strip()
-                    if 'type=' in line:
-                        type_num = line.split('type=')[1].split(',')[0].strip()
-                        message['type'] = 'RECEIVED' if type_num == '1' else 'SENT'
-                    if 'date=' in line:
-                        timestamp = int(line.split('date=')[1].split(',')[0].strip())
-                        message['date'] = datetime.fromtimestamp(timestamp/1000).strftime('%Y-%m-%d %H:%M:%S')
                     
-                    self.data['communications']['messages'].append(message)
+                    if 'body=' in line:
+                        # Handle message body more carefully
+                        body_parts = line.split('body=')[1].split(',')
+                        if body_parts:
+                            # The message body might contain commas, so we need to be careful
+                            # with the splitting logic
+                            message['content'] = body_parts[0].strip()
+                    else:
+                        message['content'] = "[No content]"
+                    
+                    if 'type=' in line:
+                        try:
+                            type_num = line.split('type=')[1].split(',')[0].strip()
+                            message['type'] = 'RECEIVED' if type_num == '1' else 'SENT'
+                        except (ValueError, IndexError):
+                            message['type'] = 'UNKNOWN'
+                    
+                    if 'date=' in line:
+                        try:
+                            date_part = line.split('date=')[1].split(',')[0].strip()
+                            timestamp = int(date_part)
+                            message['date'] = datetime.fromtimestamp(timestamp/1000).strftime('%Y-%m-%d %H:%M:%S')
+                            message['timestamp'] = timestamp
+                        except (ValueError, IndexError):
+                            message['date'] = "Unknown"
+                    
+                    # Only add if we have at least number and content
+                    if 'number' in message and 'content' in message:
+                        self.data['communications']['messages'].append(message)
+                        message_count += 1
+                
+                except Exception as e:
+                    print(f"Error processing SMS message: {str(e)}")
+                    continue
+            
+            print(f"Successfully extracted {message_count} SMS messages")
+        else:
+            print("No SMS data received or permission denied")
 
     def extract_networks(self):
         print("\nExtracting network information...")
@@ -460,3 +499,24 @@ class ForensicExtractor:
         print(f"\nSaving raw data to {filename}...")
         with open(filename, 'w') as f:
             json.dump(self.data, f, indent=4)
+
+        """Get contact name from phone number if it exists in contacts"""
+        if not phone_number:
+            return None
+            
+        # Sanitize phone number for query
+        sanitized_number = phone_number.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
+        
+        # Query the contacts provider
+        lookup_cmd = f'shell content query --uri content://com.android.contacts/data/phones/filter/{sanitized_number} --projection display_name'
+        result = self.run_adb_command(lookup_cmd)
+        
+        if result and 'display_name=' in result:
+            try:
+                contact_name = result.split('display_name=')[1].split(',')[0].strip()
+                if contact_name and contact_name != 'NULL':
+                    return contact_name
+            except (IndexError, ValueError):
+                pass
+        
+        return None
