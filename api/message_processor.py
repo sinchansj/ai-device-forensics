@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 def load_forensic_data() -> Dict[str, Any]:
     """Load the forensic report data from JSON file"""
     try:
-        file_path = Path("DataExtractor/forensic_report.json")
+        file_path = Path("DataExtractor/reports/forensic_report.json")
         logger.info(f"Attempting to load forensic data from {file_path}")
         
         if not file_path.exists():

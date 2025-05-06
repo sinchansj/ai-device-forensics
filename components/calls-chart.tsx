@@ -15,35 +15,56 @@ import {
   Cell,
 } from "recharts"
 
+interface CallData {
+  name: string
+  incoming: number
+  outgoing: number
+  missed: number
+}
+
+interface CallTypeData {
+  name: string
+  value: number
+  color: string
+}
+
 interface CallsChartProps {
   detailed?: boolean
 }
 
 export default function CallsChart({ detailed = false }: CallsChartProps) {
   const [mounted, setMounted] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [callData, setCallData] = useState<CallData[]>([])
+  const [callTypeData, setCallTypeData] = useState<CallTypeData[]>([])
 
   useEffect(() => {
     setMounted(true)
+    const fetchData = async () => {
+      try {
+        const [callActivityResponse, callTypeResponse] = await Promise.all([
+          fetch('http://localhost:8000/api/call-data'),
+          fetch('http://localhost:8000/api/call-type-data')
+        ])
+
+        const callActivityData = await callActivityResponse.json()
+        const callTypeData = await callTypeResponse.json()
+
+        setCallData(callActivityData)
+        setCallTypeData(callTypeData)
+      } catch (error) {
+        console.error('Error fetching call data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
   }, [])
 
-  if (!mounted) {
+  if (!mounted || loading) {
     return <div className="h-full w-full flex items-center justify-center">Loading chart...</div>
   }
-
-  const callData = [
-    { name: "Apr 15", incoming: 8, outgoing: 5, missed: 1 },
-    { name: "Apr 22", incoming: 12, outgoing: 9, missed: 3 },
-    { name: "Apr 29", incoming: 15, outgoing: 18, missed: 2 },
-    { name: "May 06", incoming: 25, outgoing: 22, missed: 4 },
-    { name: "May 13", incoming: 18, outgoing: 14, missed: 1 },
-  ]
-
-  const callTypeData = [
-    { name: "Incoming", value: 78, color: "#4ade80" },
-    { name: "Outgoing", value: 68, color: "#60a5fa" },
-    { name: "Missed", value: 11, color: "#f87171" },
-    { name: "Blocked", value: 5, color: "#94a3b8" },
-  ]
 
   const COLORS = ["#4ade80", "#60a5fa", "#f87171", "#94a3b8"]
 
@@ -82,7 +103,7 @@ export default function CallsChart({ detailed = false }: CallsChartProps) {
                   label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                 >
                   {callTypeData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    <Cell key={`cell-${index}`} fill={entry.color || COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip />

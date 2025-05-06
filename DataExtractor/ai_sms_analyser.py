@@ -1,6 +1,8 @@
 import json
+import os
 import datetime
 from dateutil.parser import parse
+import google.generativeai as genai
 
 def extract_recent_messages(json_file_path, days=30):
     """
@@ -44,13 +46,86 @@ def extract_recent_messages(json_file_path, days=30):
     
     return recent_messages
 
-# Example usage
-file_path = "./reports/forensic_report.json"
-recent_msgs = extract_recent_messages(file_path)
+def analyze_messages_with_ai(messages):
+    """
+    Use Gemini AI to analyze the messages from a forensic perspective.
+    """
+    # Configure the API key
+    genai.configure(api_key="AIzaSyAadytozwLf5XT4VuPGIwtNaY6NUNsioeM")
 
-print(f"Found {len(recent_msgs)} messages from the last 30 days:")
-for i, msg in enumerate(recent_msgs[:10]):  # Print first 10 for demonstration
-    print(f"\n{i+1}. Date: {msg.get('date', 'Unknown')}")
-    print(f"   From: {msg.get('number', 'Unknown')} ({msg.get('display_name', 'Unknown')})")
-    print(f"   Type: {msg.get('type', 'Unknown')}")
-    print(f"   Content: {msg.get('content', 'No content')[:50]}...")
+    # Create the model
+    generation_config = {
+        "temperature": 1,
+        "top_p": 0.95,
+        "top_k": 40,
+        "max_output_tokens": 1024,
+        "response_mime_type": "text/plain",
+    }
+
+    model = genai.GenerativeModel(
+        model_name="gemini-2.0-flash-lite-001",
+        generation_config=generation_config,
+    )
+
+    # Format messages for analysis
+    message_content = json.dumps(messages, indent=2)
+
+    # Prepare the prompt for the AI
+    prompt = f"""As an expert digital forensics analyst, please examine the following SMS messages 
+    extracted from a mobile device over the past 30 days. Be creative in your analysis and highlight anything you find interesting or noteworthy.
+    
+    Provide a thorough analysis that includes:
+    1. A general summary of communications
+    2. Identification of important or suspicious patterns
+    3. Notable contacts and their significance
+    
+    SMS Messages (JSON format):
+    {message_content}
+    """
+
+    # Get response from AI
+    response = model.generate_content(prompt)
+    return response.text
+
+def main():
+    # Path to the forensic report
+    file_path = "./reports/forensic_report.json"
+    
+    # Extract messages from the last 30 days
+    print("Extracting recent messages...")
+    recent_messages = extract_recent_messages(file_path)
+    print(f"Found {len(recent_messages)} messages from the last 30 days.")
+    
+    if not recent_messages:
+        print("No recent messages found to analyze.")
+        return
+    
+    # Display sample of extracted messages
+    print("\nSample of extracted messages:")
+    for i, msg in enumerate(recent_messages[:5]):  # Print first 5 for demonstration
+        print(f"\n{i+1}. Date: {msg.get('date', 'Unknown')}")
+        print(f"   From: {msg.get('number', 'Unknown')}")
+        print(f"   Type: {msg.get('type', 'Unknown')}")
+        print(f"   Content: {msg.get('content', 'No content')[:50]}...")
+    
+    # Analyze messages with AI
+    print("\nAnalyzing messages with AI...")
+    try:
+        analysis = analyze_messages_with_ai(recent_messages)
+        
+        # Save analysis to file
+        os.makedirs("./reports", exist_ok=True)
+        output_path = "./reports/sms_forensic_analysis.txt"
+        
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(analysis)
+        
+        print(f"\nAnalysis saved to {output_path}")
+        print("\n=== SMS Forensic Analysis ===\n")
+        print(analysis)
+        print("\n===========================\n")
+    except Exception as e:
+        print(f"Error during AI analysis: {str(e)}")
+
+if __name__ == "__main__":
+    main()

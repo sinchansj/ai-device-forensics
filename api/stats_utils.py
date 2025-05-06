@@ -3,7 +3,7 @@ from pathlib import Path
 
 def get_forensic_stats():
     # Get the path to forensic_report.json
-    report_path = Path(__file__).parent.parent / "DataExtractor" / "forensic_report.json"
+    report_path = Path(__file__).parent.parent / "DataExtractor" / "reports"/ "forensic_report.json"
     
     try:
         with open(report_path, 'r') as f:

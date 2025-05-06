@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -21,8 +24,28 @@ import MessagesChart from "@/components/messages-chart"
 import LogsTimeline from "@/components/logs-timeline"
 import AiSummary from "@/components/ai-summary"
 import DeviceInfo from "@/components/device-info"
+import { useTopContacts } from "@/lib/utils"
 
 export default function Home() {
+  const [stats, setStats] = useState({
+    calls: 0,
+    messages: 0,
+    hiddenFiles: 0
+  });
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/stats')
+      .then(res => res.json())
+      .then(data => {
+        setStats({
+          calls: data.call_count,
+          messages: data.message_count,
+          hiddenFiles: data.hidden_files_count
+        });
+      })
+      .catch(error => console.error('Error fetching stats:', error));
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50">
       <header className="bg-white border-b">
@@ -73,7 +96,7 @@ export default function Home() {
                       <Phone className="h-5 w-5 text-slate-700" />
                       <span className="font-medium">Calls</span>
                     </div>
-                    <span className="text-2xl font-bold">247</span>
+                    <span className="text-2xl font-bold">{stats.calls}</span>
                     <span className="text-sm text-slate-500">Total calls analyzed</span>
                   </div>
 
@@ -82,17 +105,17 @@ export default function Home() {
                       <MessageSquare className="h-5 w-5 text-slate-700" />
                       <span className="font-medium">Messages</span>
                     </div>
-                    <span className="text-2xl font-bold">1,893</span>
+                    <span className="text-2xl font-bold">{stats.messages}</span>
                     <span className="text-sm text-slate-500">Total messages analyzed</span>
                   </div>
 
                   <div className="bg-slate-100 rounded-lg p-4 flex flex-col">
                     <div className="flex items-center gap-2 mb-2">
                       <AlertTriangle className="h-5 w-5 text-amber-500" />
-                      <span className="font-medium">Alerts</span>
+                      <span className="font-medium">Hidden Files</span>
                     </div>
-                    <span className="text-2xl font-bold">12</span>
-                    <span className="text-sm text-slate-500">Suspicious activities</span>
+                    <span className="text-2xl font-bold">{stats.hiddenFiles}</span>
+                    <span className="text-sm text-slate-500">Found in analysis</span>
                   </div>
                 </div>
               </div>
@@ -182,13 +205,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <h3 className="font-medium">Top Contacts</h3>
                     <div className="space-y-2">
-                      {[
-                        { name: "John Smith", number: "+1 (555) 123-4567", count: 42 },
-                        { name: "Mary Johnson", number: "+1 (555) 987-6543", count: 28 },
-                        { name: "Unknown", number: "+1 (555) 555-5555", count: 15 },
-                        { name: "David Williams", number: "+1 (555) 222-3333", count: 12 },
-                        { name: "Sarah Davis", number: "+1 (555) 444-5555", count: 9 },
-                      ].map((contact, i) => (
+                      {useTopContacts().data.map((contact, i) => (
                         <div key={i} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                           <div className="flex items-center gap-3">
                             <div className="bg-slate-200 h-10 w-10 rounded-full flex items-center justify-center">
@@ -448,5 +465,5 @@ export default function Home() {
         </Tabs>
       </main>
     </div>
-  )
+  );
 }
