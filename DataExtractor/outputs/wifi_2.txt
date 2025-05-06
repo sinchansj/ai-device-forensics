@@ -1,0 +1,118 @@
+Network Id      SSID                         Security type
+0            #HIAQatar                        open
+0            #HIAQatar                        owe^
+1            .FreePREITMallsWi-Fi             open
+1            .FreePREITMallsWi-Fi             owe^
+2            080 LOUNGE                       open
+2            080 LOUNGE                       owe^
+3            1414 Living Room  TV.v,          open
+3            1414 Living Room  TV.v,          owe^
+4            1927_5G                          wpa2-psk
+4            1927_5G                          wpa3-sae^
+5            4418@Summit_on_juniper           wpa2-psk
+5            4418@Summit_on_juniper           wpa3-sae^
+6            ACTFIBERNET_5G                   wpa2-psk
+6            ACTFIBERNET_5G                   wpa3-sae^
+7            ADTL_GUEST                       open
+7            ADTL_GUEST                       owe^
+8            APT16                            wpa2-psk
+8            APT16                            wpa3-sae^
+9            Airport-Frankfurt                open
+9            Airport-Frankfurt                owe^
+10           Aruni_5GHz                       wpa2-psk
+10           Aruni_5GHz                       wpa3-sae^
+11           BLR_Free_WiFi                    open
+11           BLR_Free_WiFi                    owe^
+12           BOSwifi                          open
+12           BOSwifi                          owe^
+13           Co-CreativeCenter-5              wpa2-psk
+13           Co-CreativeCenter-5              wpa3-sae^
+14           CountryInn                       open
+14           CountryInn                       owe^
+15           Dartmouth Coach 1502             open
+15           Dartmouth Coach 1502             owe^
+16           Dartmouth Coach 3233             open
+16           Dartmouth Coach 3233             owe^
+17           ETIHAD WI-FLY                    open
+17           ETIHAD WI-FLY                    owe^
+18           Edge 30                          wpa2-psk
+18           Edge 30                          wpa3-sae^
+19           Galaxy M210F07                   wpa2-psk
+19           Galaxy M210F07                   wpa3-sae^
+20           Harsh’s iPhone                   wpa2-psk
+20           Harsh’s iPhone                   wpa3-sae^
+21           ICA-Guest                        open
+21           ICA-Guest                        owe^
+22           IRIS 102_5G                      wpa2-psk
+22           IRIS 102_5G                      wpa3-sae^
+23           LAPTOP-2LFF26PG 9031             wpa2-psk
+23           LAPTOP-2LFF26PG 9031             wpa3-sae^
+24           Lau2                             wpa2-psk
+24           Lau2                             wpa3-sae^
+25           Look Ma, no wires!               wpa2-psk
+25           Look Ma, no wires!               wpa3-sae^
+26           Maragiri                         wpa2-psk
+26           Maragiri                         wpa3-sae^
+27           MarriottBonvoy                   open
+27           MarriottBonvoy                   owe^
+28           Net4Goa_5806                     wpa2-psk
+28           Net4Goa_5806                     wpa3-sae^
+29           OAK 6TH FLOOR                    wpa2-psk
+29           OAK 6TH FLOOR                    wpa3-sae^
+30           OryxComms                        open
+30           OryxComms                        owe^
+31           PEPLINK 2008                     wpa2-psk
+31           PEPLINK 2008                     wpa3-sae^
+32           PESU-Element Block               open
+32           PESU-Element Block               owe^
+33           Pranav’s iPhone                  wpa3-sae
+34           SAMEER!                          wpa2-psk
+34           SAMEER!                          wpa3-sae^
+35           Saiabhi_5G                       wpa2-psk
+35           Saiabhi_5G                       wpa3-sae^
+36           Sheraton Guest                   open
+36           Sheraton Guest                   owe^
+37           Starbucks WiFi                   open
+37           Starbucks WiFi                   owe^
+38           Summit On Juniper Guest          open
+38           Summit On Juniper Guest          owe^
+39           TP-Link_0013_5G                  wpa2-psk
+39           TP-Link_0013_5G                  wpa3-sae^
+40           Tamarind Wifi                    wpa2-psk
+40           Tamarind Wifi                    wpa3-sae^
+41           Telekom_FlyNet                   open
+41           Telekom_FlyNet                   owe^
+42           UMassD-Guest                     open
+42           UMassD-Guest                     owe^
+43           UNIQLO FREE WiFi                 open
+43           UNIQLO FREE WiFi                 owe^
+44           Ubiquity                         wpa2-psk
+44           Ubiquity                         wpa3-sae^
+45           VBL-864                          wpa2-psk
+45           VBL-864                          wpa3-sae^
+46           WendysWiFi                       open
+46           WendysWiFi                       owe^
+47           YaleGuest                        open
+47           YaleGuest                        owe^
+48           Zoo shop12                       wpa2-psk
+48           Zoo shop12                       wpa3-sae^
+49           archerA9                         wpa2-psk
+49           archerA9                         wpa3-sae^
+50           eduroam                          wpa2-enterprise
+50           eduroam                          wpa3 enterprise^
+51           ggggg                            wpa2-psk
+51           ggggg                            wpa3-sae^
+52           samsung gm21                     wpa2-psk
+52           samsung gm21                     wpa3-sae^
+53           sharath-act-5g                   wpa2-psk
+53           sharath-act-5g                   wpa3-sae^
+54           MarriottBonvoy_GUEST             open
+54           MarriottBonvoy_GUEST             owe^
+55           Dollop Coffee Co.                wpa2-psk
+55           Dollop Coffee Co.                wpa3-sae^
+56           Boingo Hotspot                   open
+56           Boingo Hotspot                   owe^
+57           _Free_ORD_Wi-Fi                  open
+57           _Free_ORD_Wi-Fi                  owe 
+59           Melaleuca2                       wpa2-psk
+59           Melaleuca2                       wpa3-sae^
