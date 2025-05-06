@@ -24,6 +24,7 @@ import MessagesChart from "@/components/messages-chart"
 import LogsTimeline from "@/components/logs-timeline"
 import AiSummary from "@/components/ai-summary"
 import DeviceInfo from "@/components/device-info"
+import AiSmsAnalysis from "@/components/ai-sms-analysis"
 import { useTopContacts } from "@/lib/utils"
 
 export default function Home() {
@@ -240,54 +241,10 @@ export default function Home() {
 
                   <Separator />
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
                     <div className="space-y-4">
-                      <h3 className="font-medium">Key Phrases</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {[
-                          "meeting tomorrow",
-                          "send money",
-                          "call me back",
-                          "don't tell",
-                          "new number",
-                          "delete this",
-                          "password is",
-                          "secret",
-                          "location",
-                          "evidence",
-                        ].map((phrase, i) => (
-                          <Badge key={i} variant="secondary" className="px-3 py-1">
-                            {phrase}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h3 className="font-medium">Message Sentiment</h3>
-                      <div className="space-y-3">
-                        <div>
-                          <div className="flex justify-between mb-1">
-                            <span className="text-sm">Positive</span>
-                            <span className="text-sm">32%</span>
-                          </div>
-                          <Progress value={32} className="h-2 bg-slate-200" />
-                        </div>
-                        <div>
-                          <div className="flex justify-between mb-1">
-                            <span className="text-sm">Neutral</span>
-                            <span className="text-sm">45%</span>
-                          </div>
-                          <Progress value={45} className="h-2 bg-slate-200" />
-                        </div>
-                        <div>
-                          <div className="flex justify-between mb-1">
-                            <span className="text-sm">Negative</span>
-                            <span className="text-sm">23%</span>
-                          </div>
-                          <Progress value={23} className="h-2 bg-slate-200" />
-                        </div>
-                      </div>
+                      <h3 className="font-medium">Message Analysis</h3>
+                      <AiSmsAnalysis />
                     </div>
                   </div>
                 </div>
