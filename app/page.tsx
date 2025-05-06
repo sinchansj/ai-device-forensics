@@ -25,6 +25,7 @@ import LogsTimeline from "@/components/logs-timeline"
 import AiSummary from "@/components/ai-summary"
 import DeviceInfo from "@/components/device-info"
 import AiSmsAnalysis from "@/components/ai-sms-analysis"
+import HiddenFilesTimeline from "@/components/hidden-files-timeline"
 import { useTopContacts } from "@/lib/utils"
 
 export default function Home() {
@@ -129,7 +130,7 @@ export default function Home() {
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="calls">Calls</TabsTrigger>
             <TabsTrigger value="messages">Messages</TabsTrigger>
-            <TabsTrigger value="logs">Log Files</TabsTrigger>
+            <TabsTrigger value="logs">Hidden Files</TabsTrigger>
             <TabsTrigger value="ai-report">AI Report</TabsTrigger>
           </TabsList>
 
@@ -255,51 +256,51 @@ export default function Home() {
           <TabsContent value="logs">
             <Card>
               <CardHeader>
-                <CardTitle>Log File Analysis</CardTitle>
-                <CardDescription>System and application logs from the device</CardDescription>
+                <CardTitle>Hidden Files Analysis</CardTitle>
+                <CardDescription>Suspicious and hidden files detected on the device</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
                   <div className="h-96">
-                    <LogsTimeline />
+                    <HiddenFilesTimeline />
                   </div>
 
                   <Separator />
 
                   <div className="space-y-4">
-                    <h3 className="font-medium">Notable Events</h3>
+                    <h3 className="font-medium">Notable Hidden Files</h3>
                     <div className="space-y-3">
                       {[
-                        { time: "2024-05-10 23:17:42", event: "Device factory reset attempted", severity: "high" },
-                        { time: "2024-05-09 14:22:05", event: "GPS location services disabled", severity: "medium" },
-                        { time: "2024-05-08 09:45:33", event: "Multiple failed login attempts", severity: "medium" },
-                        { time: "2024-05-07 18:30:12", event: "Secure messaging app installed", severity: "low" },
-                        { time: "2024-05-05 22:15:47", event: "Browser history cleared", severity: "medium" },
-                      ].map((log, i) => (
+                        { name: ".nomedia files", description: "Used to hide media from gallery apps", severity: "low" },
+                        { name: "Hidden zip archives", description: "Multiple encrypted zip files found", severity: "medium" },
+                        { name: "Base64 encoded content", description: "Possibly obfuscated data", severity: "medium" },
+                        { name: "Hidden configuration files", description: "Application settings with stored credentials", severity: "high" },
+                        { name: "System logs with PII", description: "Personal information found in hidden logs", severity: "medium" },
+                      ].map((file, i) => (
                         <div key={i} className="p-3 rounded-lg border border-slate-200 flex items-center gap-3">
                           <div
                             className={`h-3 w-3 rounded-full ${
-                              log.severity === "high"
+                              file.severity === "high"
                                 ? "bg-red-500"
-                                : log.severity === "medium"
+                                : file.severity === "medium"
                                   ? "bg-amber-500"
                                   : "bg-blue-500"
                             }`}
                           />
                           <div className="flex-1">
-                            <p className="font-medium">{log.event}</p>
-                            <p className="text-sm text-slate-500">{log.time}</p>
+                            <p className="font-medium">{file.name}</p>
+                            <p className="text-sm text-slate-500">{file.description}</p>
                           </div>
                           <Badge
                             variant={
-                              log.severity === "high"
+                              file.severity === "high"
                                 ? "destructive"
-                                : log.severity === "medium"
+                                : file.severity === "medium"
                                   ? "outline"
                                   : "secondary"
                             }
                           >
-                            {log.severity}
+                            {file.severity}
                           </Badge>
                         </div>
                       ))}
