@@ -5,7 +5,8 @@ from api.message_processor import process_message_data, process_hourly_distribut
 from api.stats_utils import get_forensic_stats
 from api.sms_analyzer import get_sms_analysis
 from api.hidden_files_processor import process_hidden_files
-from api.ai_report import get_ai_report  # Add this import
+from api.ai_report import get_ai_report
+from api.network_processor import process_network_security_data, get_network_list  # Add this import
 
 app = FastAPI()
 
@@ -18,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Existing endpoints
 @app.get("/api/call-data")
 async def get_call_data():
     return process_call_data()
@@ -56,3 +58,14 @@ async def get_hidden_files():
 async def get_ai_report_endpoint():
     """Get the comprehensive AI forensic report"""
     return get_ai_report()
+
+# New network endpoints
+@app.get("/api/network-security")
+async def get_network_security():
+    """Get distribution of network security types"""
+    return process_network_security_data()
+
+@app.get("/api/network-list")
+async def get_networks():
+    """Get list of all networks detected on the device"""
+    return get_network_list()

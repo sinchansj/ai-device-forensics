@@ -57,12 +57,12 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-slate-800" />
-            <h1 className="text-xl font-bold text-slate-800">Digital Forensics Report</h1>
+            <h1 className="text-xl font-bold text-slate-800">Android Forensics Report</h1>
           </div>
           <div className="flex items-center gap-4">
             <Badge variant="outline" className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />
-              <span>Generated: May 16, 2024</span>
+              <span>Generated: May 8, 2024</span>
             </Badge>
             <Badge variant="outline" className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
@@ -192,10 +192,8 @@ export default function Home() {
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg font-medium flex items-center gap-2">
-                  <Brain className="h-5 w-5" />
-                  AI Forensic Insights
-                </CardTitle>
+                <CardTitle className="text-lg font-medium">Network Security Analysis</CardTitle>
+                <CardDescription>Analysis of detected wireless networks</CardDescription>
               </CardHeader>
               <CardContent>
                 <AiSummary />

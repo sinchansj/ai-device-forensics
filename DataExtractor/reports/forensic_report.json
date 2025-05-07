@@ -53129,20 +53129,20 @@
             "security": "owe^"
         },
         {
-            "ssid": "080",
-            "security": "LOUNGE open"
+            "ssid": "080 LOUNGE",
+            "security": "open"
         },
         {
-            "ssid": "080",
-            "security": "LOUNGE owe^"
+            "ssid": "080 LOUNGE",
+            "security": "owe^"
         },
         {
-            "ssid": "1414",
-            "security": "Living Room TV.v, open"
+            "ssid": "1414 Living Room TV.v",
+            "security": "open"
         },
         {
-            "ssid": "1414",
-            "security": "Living Room TV.v, owe^"
+            "ssid": "1414 Living Room TV.v",
+            "security": "owe^"
         },
         {
             "ssid": "1927_5G",
@@ -53233,52 +53233,52 @@
             "security": "owe^"
         },
         {
-            "ssid": "Dartmouth",
-            "security": "Coach 1502 open"
+            "ssid": "Dartmouth Coach 1502",
+            "security": "open"
         },
         {
-            "ssid": "Dartmouth",
-            "security": "Coach 1502 owe^"
+            "ssid": "Dartmouth Coach 1502",
+            "security": "owe^"
         },
         {
-            "ssid": "Dartmouth",
-            "security": "Coach 3233 open"
+            "ssid": "Dartmouth Coach 3233",
+            "security": "open"
         },
         {
-            "ssid": "Dartmouth",
-            "security": "Coach 3233 owe^"
+            "ssid": "Dartmouth Coach 3233",
+            "security": "owe^"
         },
         {
-            "ssid": "ETIHAD",
-            "security": "WI-FLY open"
+            "ssid": "ETIHAD WI-FLY",
+            "security": "open"
         },
         {
-            "ssid": "ETIHAD",
-            "security": "WI-FLY owe^"
+            "ssid": "ETIHAD WI-FLY",
+            "security": "owe^"
         },
         {
-            "ssid": "Edge",
-            "security": "30 wpa2-psk"
+            "ssid": "Edge 30",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Edge",
-            "security": "30 wpa3-sae^"
+            "ssid": "Edge 30",
+            "security": "wpa3-sae^"
         },
         {
-            "ssid": "Galaxy",
-            "security": "M210F07 wpa2-psk"
+            "ssid": "Galaxy M210F07",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Galaxy",
-            "security": "M210F07 wpa3-sae^"
+            "ssid": "Galaxy M210F07",
+            "security": "wpa3-sae^"
         },
         {
-            "ssid": "Harsh\u2019s",
-            "security": "iPhone wpa2-psk"
+            "ssid": "Harsh's iPhone",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Harsh\u2019s",
-            "security": "iPhone wpa3-sae^"
+            "ssid": "Harsh's iPhone",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "ICA-Guest",
@@ -53289,20 +53289,20 @@
             "security": "owe^"
         },
         {
-            "ssid": "IRIS",
-            "security": "102_5G wpa2-psk"
+            "ssid": "IRIS 102_5G",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "IRIS",
-            "security": "102_5G wpa3-sae^"
+            "ssid": "IRIS 102_5G",
+            "security": "wpa3-sae^"
         },
         {
-            "ssid": "LAPTOP-2LFF26PG",
-            "security": "9031 wpa2-psk"
+            "ssid": "LAPTOP-2LFF26PG 9031",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "LAPTOP-2LFF26PG",
-            "security": "9031 wpa3-sae^"
+            "ssid": "LAPTOP-2LFF26PG 9031",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "Lau2",
@@ -53313,12 +53313,12 @@
             "security": "wpa3-sae^"
         },
         {
-            "ssid": "Look",
-            "security": "Ma, no wires! wpa2-psk"
+            "ssid": "Look Ma, no wires!",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Look",
-            "security": "Ma, no wires! wpa3-sae^"
+            "ssid": "Look Ma, no wires!",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "Maragiri",
@@ -53345,12 +53345,12 @@
             "security": "wpa3-sae^"
         },
         {
-            "ssid": "OAK",
-            "security": "6TH FLOOR wpa2-psk"
+            "ssid": "OAK 6TH FLOOR",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "OAK",
-            "security": "6TH FLOOR wpa3-sae^"
+            "ssid": "OAK 6TH FLOOR",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "OryxComms",
@@ -53361,24 +53361,24 @@
             "security": "owe^"
         },
         {
-            "ssid": "PEPLINK",
-            "security": "2008 wpa2-psk"
+            "ssid": "PEPLINK 2008",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "PEPLINK",
-            "security": "2008 wpa3-sae^"
+            "ssid": "PEPLINK 2008",
+            "security": "wpa3-sae^"
         },
         {
-            "ssid": "PESU-Element",
-            "security": "Block open"
+            "ssid": "PESU-Element Block",
+            "security": "open"
         },
         {
-            "ssid": "PESU-Element",
-            "security": "Block owe^"
+            "ssid": "PESU-Element Block",
+            "security": "owe^"
         },
         {
-            "ssid": "Pranav\u2019s",
-            "security": "iPhone wpa3-sae"
+            "ssid": "Pranav's iPhone",
+            "security": "wpa3-sae"
         },
         {
             "ssid": "SAMEER!",
@@ -53397,28 +53397,28 @@
             "security": "wpa3-sae^"
         },
         {
-            "ssid": "Sheraton",
-            "security": "Guest open"
+            "ssid": "Sheraton Guest",
+            "security": "open"
         },
         {
-            "ssid": "Sheraton",
-            "security": "Guest owe^"
+            "ssid": "Sheraton Guest",
+            "security": "owe^"
         },
         {
-            "ssid": "Starbucks",
-            "security": "WiFi open"
+            "ssid": "Starbucks WiFi",
+            "security": "open"
         },
         {
-            "ssid": "Starbucks",
-            "security": "WiFi owe^"
+            "ssid": "Starbucks WiFi",
+            "security": "owe^"
         },
         {
-            "ssid": "Summit",
-            "security": "On Juniper Guest open"
+            "ssid": "Summit On Juniper Guest",
+            "security": "open"
         },
         {
-            "ssid": "Summit",
-            "security": "On Juniper Guest owe^"
+            "ssid": "Summit On Juniper Guest",
+            "security": "owe^"
         },
         {
             "ssid": "TP-Link_0013_5G",
@@ -53429,12 +53429,12 @@
             "security": "wpa3-sae^"
         },
         {
-            "ssid": "Tamarind",
-            "security": "Wifi wpa2-psk"
+            "ssid": "Tamarind Wifi",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Tamarind",
-            "security": "Wifi wpa3-sae^"
+            "ssid": "Tamarind Wifi",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "Telekom_FlyNet",
@@ -53453,12 +53453,12 @@
             "security": "owe^"
         },
         {
-            "ssid": "UNIQLO",
-            "security": "FREE WiFi open"
+            "ssid": "UNIQLO FREE WiFi",
+            "security": "open"
         },
         {
-            "ssid": "UNIQLO",
-            "security": "FREE WiFi owe^"
+            "ssid": "UNIQLO FREE WiFi",
+            "security": "owe^"
         },
         {
             "ssid": "Ubiquity",
@@ -53493,12 +53493,12 @@
             "security": "owe^"
         },
         {
-            "ssid": "Zoo",
-            "security": "shop12 wpa2-psk"
+            "ssid": "Zoo shop12",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Zoo",
-            "security": "shop12 wpa3-sae^"
+            "ssid": "Zoo shop12",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "archerA9",
@@ -53525,12 +53525,12 @@
             "security": "wpa3-sae^"
         },
         {
-            "ssid": "samsung",
-            "security": "gm21 wpa2-psk"
+            "ssid": "samsung gm21",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "samsung",
-            "security": "gm21 wpa3-sae^"
+            "ssid": "samsung gm21",
+            "security": "wpa3-sae^"
         },
         {
             "ssid": "sharath-act-5g",
@@ -53549,20 +53549,20 @@
             "security": "owe^"
         },
         {
-            "ssid": "Dollop",
-            "security": "Coffee Co. wpa2-psk"
+            "ssid": "Dollop Coffee Co.",
+            "security": "wpa2-psk"
         },
         {
-            "ssid": "Dollop",
-            "security": "Coffee Co. wpa3-sae^"
+            "ssid": "Dollop Coffee Co.",
+            "security": "wpa3-sae^"
         },
         {
-            "ssid": "Boingo",
-            "security": "Hotspot open"
+            "ssid": "Boingo Hotspot",
+            "security": "open"
         },
         {
-            "ssid": "Boingo",
-            "security": "Hotspot owe^"
+            "ssid": "Boingo Hotspot",
+            "security": "owe^"
         },
         {
             "ssid": "_Free_ORD_Wi-Fi",
