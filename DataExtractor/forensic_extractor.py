@@ -322,7 +322,7 @@ class ForensicExtractor:
             '/sdcard/Download',
             '/sdcard/DCIM',
             '/sdcard/WhatsApp',
-            '/data/local/tmp',  # Keep this from original code
+            '/data/local/tmp', 
         ]
         
         # Suspicious patterns (combining both approaches)
