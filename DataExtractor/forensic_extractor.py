@@ -499,24 +499,3 @@ class ForensicExtractor:
         print(f"\nSaving raw data to {filename}...")
         with open(filename, 'w') as f:
             json.dump(self.data, f, indent=4)
-
-        """Get contact name from phone number if it exists in contacts"""
-        if not phone_number:
-            return None
-            
-        # Sanitize phone number for query
-        sanitized_number = phone_number.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
-        
-        # Query the contacts provider
-        lookup_cmd = f'shell content query --uri content://com.android.contacts/data/phones/filter/{sanitized_number} --projection display_name'
-        result = self.run_adb_command(lookup_cmd)
-        
-        if result and 'display_name=' in result:
-            try:
-                contact_name = result.split('display_name=')[1].split(',')[0].strip()
-                if contact_name and contact_name != 'NULL':
-                    return contact_name
-            except (IndexError, ValueError):
-                pass
-        
-        return None
