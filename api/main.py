@@ -4,7 +4,8 @@ from api.call_processor import process_call_data, process_call_type_data, proces
 from api.message_processor import process_message_data, process_hourly_distribution
 from api.stats_utils import get_forensic_stats
 from api.sms_analyzer import get_sms_analysis
-from api.hidden_files_processor import process_hidden_files  # Add this import
+from api.hidden_files_processor import process_hidden_files
+from api.ai_report import get_ai_report  # Add this import
 
 app = FastAPI()
 
@@ -46,8 +47,12 @@ async def sms_analysis_endpoint():
     """Get AI analysis of SMS messages"""
     return get_sms_analysis()
 
-# Add this new endpoint
 @app.get("/api/hidden-files")
 async def get_hidden_files():
     """Get list of hidden files detected during analysis"""
     return process_hidden_files()
+
+@app.get("/api/ai-report")
+async def get_ai_report_endpoint():
+    """Get the comprehensive AI forensic report"""
+    return get_ai_report()

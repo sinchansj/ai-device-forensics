@@ -28,9 +28,7 @@ def compact_json(file_path):
 
 # Function to generate a forensic report
 def generate_forensic_report(data):
-    prompt = f"""You are an experienced digital forensics investigator. I have extracted data from an Android device that includes communications (calls and SMS), WiFi networks, device info, and file data.
-
-As a forensic investigator, analyze this extracted data and provide your professional insights and findings. Be creative in your analysis and highlight anything you find interesting or noteworthy. Also see if you can identify any anomalies, patterns, or unusual activity.
+    prompt = f"""You are an experienced digital forensics investigator analyzing data extracted from an Android device. Rather than just listing findings, approach this like a detective piecing together a story. Analyze the communications data in particular, looking for significant patterns, shifts in behavior, and connections between contacts. Go beyond surface-level observations to speculate on possible underlying contexts or scenarios. What might these patterns suggest about the user’s activities, relationships, or movements? Highlight anything that stands out as potentially noteworthy, surprising, or indicative of a larger narrative.
 
 Here's the extracted data:
 {data}"""
@@ -45,7 +43,7 @@ Here's the extracted data:
 
 # Main execution
 def main():
-    file_path = 'forensic_report.json'  # Path to your JSON file
+    file_path = './reports/forensic_report.json'  # Path to your JSON file
     
     # Compact the JSON file
     compacted_data = compact_json(file_path)

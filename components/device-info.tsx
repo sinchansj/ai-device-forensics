@@ -13,7 +13,7 @@ export default function DeviceInfo() {
             <Smartphone className="h-5 w-5 text-slate-600" />
             <div>
               <p className="text-sm text-slate-500">Device Model</p>
-              <p className="font-medium">Samsung Galaxy S21</p>
+              <p className="font-medium">Pixel 9</p>
             </div>
           </div>
 
@@ -21,7 +21,7 @@ export default function DeviceInfo() {
             <Memory className="h-5 w-5 text-slate-600" />
             <div>
               <p className="text-sm text-slate-500">Android Version</p>
-              <p className="font-medium">Android 12 (Build SP1A.210812.016)</p>
+              <p className="font-medium">Android 15 (Build SP1A.210812.016)</p>
             </div>
           </div>
 
