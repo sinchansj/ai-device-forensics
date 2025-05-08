@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Digital Forensics Dashboard
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Digital Forensics Dashboard is an advanced tool designed for extracting, analyzing, and visualizing digital evidence from Android devices. The application provides a comprehensive forensic analysis suite that helps investigators examine call records, text messages, network connections, file systems, and identify potentially suspicious activities.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Device Information Extraction**: Basic device details including model, Android version, and user information
+- **Communications Analysis**: 
+  - Call logs with detailed metadata (incoming, outgoing, missed calls)
+  - SMS message extraction and categorization
+  - Contact information association
+- **Network Intelligence**: Extracted WiFi networks and connection histories
+- **File System Analysis**:
+  - Hidden file detection
+  - Suspicious file identification based on patterns, permissions, and content
+  - Media file extraction and categorization
+  - Download history analysis
+- **Suspicious Activity Detection**:
+  - Night-time activities
+  - Executable files with suspicious permissions
+  - Encrypted or encoded content
+  - Hidden media markers
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technical Requirements
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Python 3.7+
+- Android Debug Bridge (ADB) installed and accessible in PATH
+- Connected Android device with USB debugging enabled
+- Required Python packages:
+  - subprocess
+  - datetime
+  - json
+  - os
 
-## Learn More
+## Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. Ensure Python 3.7+ is installed on your system
+2. Install ADB and add it to your PATH
+3. Enable USB debugging on the target Android device
+4. Connect the device via USB
+5. Clone this repository:
+   ```
+   git clone https://github.com/yourusername/digital-forensics-dashboard.git
+   cd digital-forensics-dashboard
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Connect your Android device via USB with debugging enabled
+2. Run the extractor:
+   ```
+   cd DataExtractor
+   python run_extractor.py
+   ```
+3. The tool will extract forensic data and save it to forensic_report.json
+4. Analyze the JSON report or use with the dashboard visualization tool
 
-## Deploy on Vercel
+## Data Extracted
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The tool extracts and structures the following data:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Device Information**: Model, Android version, username, last login
+- **Call Records**: Number, type (incoming/outgoing/missed), date, duration, contact details
+- **SMS Messages**: Number, content, type (sent/received), timestamp
+- **Network Information**: SSID, security type
+- **File System**: Photos, downloads, suspicious and hidden files
+
+## Using with Caution
+
+This tool is intended for legitimate forensic investigations and educational purposes only. Always:
+
+1. Obtain proper authorization before examining any device
+2. Follow legal and ethical guidelines for digital forensics
+3. Maintain chain of custody for evidence
+4. Document all actions taken during the investigation
+
+## Future Enhancements
+
+- Enhanced encryption detection 
+- Timeline visualization
+- Location data mapping
+- App usage analysis
+- Memory forensics capabilities
+- Integration with other forensic tools
+
+## License
+
+This project is intended for educational and legitimate forensic use only. Please use responsibly and in compliance with relevant laws and regulations.
+
+
+---
+
+*Note: This dashboard is designed for educational purposes and legitimate forensic investigations only. Always ensure you have proper authorization before examining any device.*
